@@ -10,3 +10,34 @@
     font-size: 3em;
     color: color(primary);
 }
+
+.seconday-menu-nav {
+  background-color: #fff;
+  width: 100%;
+}
+
+.navbar-inverse .seconday-menu-nav > li > a {
+  color: #000;
+}
+
+
+footer {
+  position:fixed;
+  left:0px;
+  bottom:0px;
+  height:30px;
+  width:100%;
+  background:#54305f;
+  padding-top: 5px;
+  text-align: center;
+}
+
+footer a {
+  color: #fff;
+  font-size: 12px;
+  padding: 0 15px;
+}
+
+footer a:not(:last-child) {
+  border-right: 2px solid #fff;
+}

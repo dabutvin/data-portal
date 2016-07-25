@@ -4,7 +4,6 @@ import { enableProdMode } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
 
 
-import { VENDOR_PROVIDERS } from './provider/index';
 import { APP_PROVIDERS } from './app.providers';
 import { AppComponent } from './app.component';
 
@@ -19,7 +18,6 @@ if (ENV === 'production') {
 }
 
 bootstrap(AppComponent, [
-    VENDOR_PROVIDERS,
     APP_PROVIDERS,
     HTTP_PROVIDERS,
     HttpUtilsService
