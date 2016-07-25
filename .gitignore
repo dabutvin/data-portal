@@ -10,3 +10,4 @@
 .DS_Store
 /src/assets/styles/*.css
 .env
+**/npm-debug.log
