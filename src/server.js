@@ -16,7 +16,7 @@ var express = require('express'),
 
 var app = module.exports = express();
 
-dotenv.load();
+dotenv.config({silent: true});
 
 var env = require('./node/shared/env');
 
@@ -42,9 +42,6 @@ if (env.env === 'development') {
 if (env.env === 'production') {
   // TODO
 }
-
-var keyVault = require('./node/shared/keyvault');
-
 
 /**
  * Routes
