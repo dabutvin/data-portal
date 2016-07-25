@@ -32,6 +32,11 @@ gulp.task('build-assets', function (done) {
         })
         .pipe(gulp.dest(config.build.path));
 
+        gulp.src(config.root + 'package.json', {
+            base: config.root
+        })
+        .pipe(gulp.dest(config.build.path));
+
         gulp.src(config.app + '**/*.css', {
             base: config.app
         })
