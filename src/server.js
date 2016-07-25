@@ -11,10 +11,14 @@ var express = require('express'),
   routes = require('./node/routes'),
   api = require('./node/routes/api'),
   http = require('http'),
-  path = require('path');
+  path = require('path'),
+  dotenv = require('dotenv');
 
 var app = module.exports = express();
 
+dotenv.load();
+
+var env = require('./node/shared/env');
 
 /**
  * Configuration
@@ -29,17 +33,17 @@ app.use(bodyParser.json());                                     // parse applica
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 app.use(methodOverride());
 
-var env = process.env.NODE_ENV || 'development';
-
 // development only
-if (env === 'development') {
+if (env.env === 'development') {
   //app.use(express.errorHandler());
 }
 
 // production only
-if (env === 'production') {
+if (env.env === 'production') {
   // TODO
 }
+
+var keyVault = require('./node/shared/keyvault');
 
 
 /**
