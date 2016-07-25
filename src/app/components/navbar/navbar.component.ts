@@ -4,7 +4,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
     selector: 'as-navbar',
-    templateUrl: 'app/shared/navbar/navbar.html',
+    templateUrl: 'app/components/navbar/navbar.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES]
 })
