@@ -2,3 +2,14 @@
 	font-weight: bold;
 	color: color(primary);
 }
+
+.navbar-inverse {
+  background-color: #54305f;
+}
+
+.navbar-inverse .navbar-header a {
+  color: #fff;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: #fff;
+}
