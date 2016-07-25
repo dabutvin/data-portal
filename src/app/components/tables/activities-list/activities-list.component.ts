@@ -1,4 +1,4 @@
-import { Component, OnInit, Input}  from '@angular/core';
+import { Component, OnInit, Input }  from '@angular/core';
 
 import { Activity }                 from '../../../models/activity';
 import { ActivityDataService }              from '../../../services/activity.data.service';
@@ -10,14 +10,14 @@ import { ActivityDataService }              from '../../../services/activity.dat
     providers: [ActivityDataService]
 })
 
-export class ActivityListComponent implements OnInit {   
+export class ActivityListComponent implements OnInit {
     @Input() constellationId: string;
     @Input() hostAgencyId: string;
     activities: Activity[];
 
     constructor(
         private dataService: ActivityDataService) {}
-    
+
     getActivity() {
         this.dataService
             .getActivityDetail(this.constellationId, this.hostAgencyId)
@@ -27,6 +27,6 @@ export class ActivityListComponent implements OnInit {
     }
 
     ngOnInit() {
-        //this.getActivity();
+        // this.getActivity();
     }
 }
