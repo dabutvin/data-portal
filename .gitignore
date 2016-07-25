@@ -1,0 +1,11 @@
+.idea/
+/node_modules
+/bower_components
+/build
+/src/build
+/dist
+/report
+/typings
+/src/tmp
+.DS_Store
+/src/assets/styles/*.css
