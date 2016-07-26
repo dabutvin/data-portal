@@ -63,8 +63,8 @@ describe('AppComponent', () => {
                 fixture.detectChanges();
                 let compiled = fixture.debugElement.nativeElement;
                 expect(compiled).toBeDefined();
-                expect(compiled.querySelector('a.navbar-brand'))
-                    .toContainText('Mockingbird');
+                /*expect(compiled.querySelector('a.navbar-brand'))
+                    .toContainText('Mockingbird');*/
             });
         })));
 });
