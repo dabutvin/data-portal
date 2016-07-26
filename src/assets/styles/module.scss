@@ -41,3 +41,15 @@ footer a {
 footer a:not(:last-child) {
   border-right: 2px solid #fff;
 }
+
+.not-authorized h4 {
+  margin: 50px 0 50px 20px;
+}
+
+.not-authorized img {
+  width: 50%;
+  max-width: 700px;
+  margin: auto;
+  display: block;
+}
+

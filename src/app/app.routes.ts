@@ -4,6 +4,8 @@ import { PlacementsAddComponent } from './components/placements/placements.compo
 import { HubProviderComponent } from './components/hub-provider/hub-provider.component';
 import { MyConstellationComponent } from './components/my-constellation/my-constellation.component';
 import { ManageHomesComponent } from './components/manage-homes/manage-homes.component';
+import { NotAuthorizedComponent } from './components/not-authorized/not-authorized.component';
+
 
 const routes: RouterConfig = [
     {
@@ -21,6 +23,10 @@ const routes: RouterConfig = [
     {
         path: 'manage-homes',
         component: ManageHomesComponent
+    },
+    {
+        path: 'not-authorized',
+        component: NotAuthorizedComponent
     },
     {
         path: '',
