@@ -1,1 +1,90 @@
-<h1>Hub provider - show children</h1>
+<div class="container" *ngIf="constellation">
+  <div class="row" style="font-size: 12px;">
+    <div class="col-md-2">
+      <label>Constellation Name: </label> {{constellation.ConstellationName}}
+    </div>
+    <div class="col-md-3">
+      <label>Host Agency: </label> {{constellation.AgencyName}}
+    </div>
+    <div class="col-md-3">
+      <label>Last updated: </label> {{constellation.LastUpdated}}
+    </div>
+    <div class="col-md-2">
+      <label>Report period</label> June 2016
+    </div>
+    <div class="col-md-2">
+      <label>Report status</label> {{constellation.ReportStatus}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <label>Number of satellite homes: </label> {{constellation.NumberOfSateliteHomes}}
+    </div>
+    <div class="col-md-3">
+      <label>Constellation launch date: </label> {{constellation.ConstellationStartDate}}
+    </div>
+    <div class="col-md-5">
+      <label>No. of allegations made on safety of the Constellation youth: </label> {{constellation.NumberOfSafetyAllegations}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <label>Number of Non dependent youth: </label> {{constellation.NumberOfDependentYouth}}
+    </div>
+    <div class="col-md-8">
+      <!-- TODO Missing info -->
+      <label>No. of Dependent youth: </label> 0
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <label>Number of sibling sets: </label> {{constellation.NumberOfFullSiblingSets}}
+    </div>
+    <div class="col-md-4">
+      <label>Full sibling sets in the same satellite home: </label> {{constellation.NumberOfDependentYouth}} <a href="">View</a>
+    </div>
+    <div class="col-md-4">
+      <label>No. of sibling sets in constellation since launch: </label> {{constellation.NumberOfFullSiblingSetsSinceLaunch}}
+    </div>
+  </div>
+
+  <h4>Hub Home</h4>
+  <div class="row">
+    <div class="col-md-4">
+      Hub home start date: {{constellation.HubHomeStartDate}}
+    </div>
+    <div class="col-md-8">
+      <!-- TODO this info is missing-->
+      Free of CPS or licensing allegations issues? Yes
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      Hub provider: {{constellation.HubHomePrimaryContactName}}
+    </div>
+    <div class="col-md-4">
+      Phone:  {{constellation.HubHomePrimaryContactPhone}}
+    </div>
+    <div class="col-md-4">
+      Email: {{constellation.HubHomePrimaryContactEmail}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      Foster parent recruitment activities: {{constellation.NumberOfRecruitingEvents}}
+    </div>
+    <div class="col-md-4">
+      No. of newly licensed homes added: {{constellation.NumberOfNewlyLicensedHomesAdded}}
+    </div>
+    <div>
+      No. of existing licensed homes added: {{constellation.NumberOfExistingLicensedHomesAdded}}
+    </div>
+  </div>
+
+  <h4>Constellation activities this period</h4>
+    <as-activity-list-table [constellationId]="constellationId" [reportDate]="reportDate"></as-activity-list-table>
+
+  <h4>Constellation home support services this period</h4>
+
+
+</div>

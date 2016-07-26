@@ -7,8 +7,13 @@ export class ConstellationService {
 
     constructor(private httpUtil: HttpUtilsService) { }
 
-    getConstellationOverview(userUPN: string) {
-        let url = `api/constellation/${userUPN}`;
+    getConstellationOverview(constellationId: string, reportDate: string) {
+        const url = `api/constellation/${constellationId}/overview/${reportDate}`;
+        return this.httpUtil.get(url);
+    }
+
+    getConstellationActivity(constellationId: string, reportDate: string) {
+        const url = `api/constellation/${constellationId}/activities/${reportDate}`;
         return this.httpUtil.get(url);
     }
 }

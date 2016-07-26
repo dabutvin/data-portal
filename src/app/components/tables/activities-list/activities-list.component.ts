@@ -1,32 +1,36 @@
 import { Component, OnInit, Input }  from '@angular/core';
 
 import { Activity }                 from '../../../models/activity';
-import { ActivityDataService }              from '../../../services/activity.data.service';
+import { ConstellationService }              from '../../../services/constellation.service';
 
 @Component({
     selector: 'as-activity-list-table',
     templateUrl: 'app/components/tables/activities-list/activities-list.component.html',
     styleUrls: ['app/components/tables/activities-list/activities-list.component.css'],
-    providers: [ActivityDataService]
+    providers: [ConstellationService]
 })
 
 export class ActivityListComponent implements OnInit {
     @Input() constellationId: string;
-    @Input() hostAgencyId: string;
-    activities: Activity[];
+    @Input() reportDate: string;
+    activities: Array<Activity>;
 
     constructor(
-        private dataService: ActivityDataService) {}
+        private dataService: ConstellationService) {
+        this.activities = new Array<Activity>();
+    }
 
     getActivity() {
         this.dataService
-            .getActivityDetail(this.constellationId, this.hostAgencyId)
+            .getConstellationActivity(this.constellationId, this.reportDate)
             .then(data => {
-                this.activities = data as Activity[];
+                data[0].forEach(activity => {
+                    this.activities.push(new Activity(activity));
+                });
             });
     }
 
     ngOnInit() {
-        // this.getActivity();
+        this.getActivity();
     }
 }
