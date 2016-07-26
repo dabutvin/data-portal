@@ -24,7 +24,7 @@ const routes: RouterConfig = [
     },
     {
         path: '',
-        redirectTo: 'placements',
+        redirectTo: 'hub-provider',
         pathMatch: 'full'
     }
 
