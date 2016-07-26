@@ -21,6 +21,8 @@ dotenv.config({ silent: true });
 
 var env = require('./node/shared/env');
 
+var constellation = require('./node/routes/constellation');
+
 /**
  * Configuration
  */
@@ -46,16 +48,6 @@ if (env.env === 'production') {
 
 var db = require('./node/shared/db');
 
-function testQuery() {
-    new sql.Request().execute('GetConstellationOverview').then(function (recordSet) {
-        console.log(recordSet);
-    }).catch(function (err) {
-        console.error(err);
-    });
-}
-
-db.sendRequest(testQuery);
-
 /**
  * Routes
  */
@@ -66,6 +58,7 @@ app.get('/', routes.index);
 
 // JSON API
 app.get('/api/name', api.name);
+app.use('/api/constellation', constellation);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
