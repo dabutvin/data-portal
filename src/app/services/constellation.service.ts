@@ -1,16 +1,14 @@
 import { Injectable }     from '@angular/core';
 
-// import { Child } from 'app/models/child';
 import { HttpUtilsService } from '../utils/httpUtils.service';
 
 @Injectable()
-export class DataService {
+export class ConstellationService {
 
     constructor(private httpUtil: HttpUtilsService) { }
 
-    getYouthDetail(constellationId: string, hostAgencyId: string) {
-        let url = `app/data/youth/${hostAgencyId}/${constellationId}/`;
+    getConstellationOverview(userUPN: string) {
+        let url = `api/constellation/${userUPN}`;
         return this.httpUtil.get(url);
     }
 }
-

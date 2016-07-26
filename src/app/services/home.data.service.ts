@@ -9,7 +9,7 @@ export class HomeDataService {
     constructor(private httpUtil: HttpUtilsService) { }
 
     getHomeDetail(constellationId: string, hostAgencyId: string) {
-        let url = `app/data/home/${constellationId}/${hostAgencyId}`;
+        let url = `app/data/home/${hostAgencyId}/${constellationId}`;
         return this.httpUtil.get(url);
     }
 }

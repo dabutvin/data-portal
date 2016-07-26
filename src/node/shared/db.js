@@ -6,6 +6,7 @@ function sendRequest(request) {
     keyVault.getSecret(env.sqlSecretName).then(function (result) {
         var config = result.value;
         sql.connect(config).then(function () {
+            console.log(request);
             request();
         }).catch(function (err) {
             console.error(err);
