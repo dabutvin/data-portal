@@ -1,5 +1,6 @@
 type HomeType = "Hub" | "Satellite";
 export class Home {
+    homeID: number;
     homeType: HomeType;             // Type of home (see class above)
     lName: string;                  // Last name of family in house
     zipCode: number;
