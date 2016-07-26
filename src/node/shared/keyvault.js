@@ -6,14 +6,15 @@ var env = require('./env');
 var clientId = env.clientId;
 var clientSecret = env.clientSecret;
  
-//var credentials = new azureKeyVault.KeyVaultCredentials(authenticator);
-//var client = new azureKeyVault.KeyVaultClient(credentials);
+var credentials = new azureKeyVault.KeyVaultCredentials(authenticator);
+var client = new azureKeyVault.KeyVaultClient(credentials);
  
 var vaultUri = env.vaultUri;
 
-/*function getSecret(secretId) {
+function getSecret(secretId) {
+  console.log('id: ' + secretId);
   return new Promise(function(resolve, reject) {
-    client.getSecret(secretId, function(err, result) {
+    client.getSecret(env.vaultUri + '/secrets/' + secretId, function(err, result) {
       if (err) reject(err);
       resolve(result);
       console.info('Secret read: ' + JSON.stringify(result, null, ' '));
@@ -24,15 +25,15 @@ var vaultUri = env.vaultUri;
 function authenticator(challenge, callback) {
   // Create a new authentication context. 
   var context = new adalNode.AuthenticationContext(challenge.authorization);
-  // Use the context to acquire an authentication token. 
+  // Use the context to acquire an authentication token.
   return context.acquireTokenWithClientCredentials(challenge.resource, clientId, clientSecret, function(err, tokenResponse) {
       if (err) throw err;
       // Calculate the value to be set in the request's Authorization header and resume the call. 
       var authorizationValue = tokenResponse.tokenType + ' ' + tokenResponse.accessToken;
       return callback(null, authorizationValue);
   });
-}*/
+}
 
 module.exports = {
-    //getSecret: getSecret
+    getSecret: getSecret
 }

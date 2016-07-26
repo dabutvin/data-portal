@@ -43,6 +43,8 @@ if (env.env === 'production') {
   // TODO
 }
 
+var sql = require('./node/shared/sql');
+
 /**
  * Routes
  */
