@@ -4,17 +4,22 @@
  */
 
 var express = require('express'),
-  bodyParser = require('body-parser'),
-  methodOverride = require('method-override'),
-  errorHandler = require('error-handler'),
-  morgan = require('morgan'),
-  routes = require('./node/routes'),
-  api = require('./node/routes/api'),
-  http = require('http'),
-  path = require('path');
+    bodyParser = require('body-parser'),
+    methodOverride = require('method-override'),
+    errorHandler = require('error-handler'),
+    morgan = require('morgan')
+    sql = require('mssql'),
+    routes = require('./node/routes'),
+    api = require('./node/routes/api'),
+    http = require('http'),
+    path = require('path'),
+    dotenv = require('dotenv');
 
 var app = module.exports = express();
 
+dotenv.config({ silent: true });
+
+var env = require('./node/shared/env');
 
 /**
  * Configuration
@@ -29,18 +34,27 @@ app.use(bodyParser.json());                                     // parse applica
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 app.use(methodOverride());
 
-var env = process.env.NODE_ENV || 'development';
-
 // development only
-if (env === 'development') {
-  //app.use(express.errorHandler());
+if (env.env === 'development') {
+    //app.use(express.errorHandler());
 }
 
 // production only
-if (env === 'production') {
-  // TODO
+if (env.env === 'production') {
+    // TODO
 }
 
+var db = require('./node/shared/db');
+
+function testQuery() {
+    new sql.Request().execute('GetConstellationOverview').then(function (recordSet) {
+        console.log(recordSet);
+    }).catch(function (err) {
+        console.error(err);
+    });
+}
+
+db.sendRequest(testQuery);
 
 /**
  * Routes
@@ -62,5 +76,5 @@ app.get('*', routes.index);
  */
 
 http.createServer(app).listen(app.get('port'), function () {
-  console.log('Express server listening on port ' + app.get('port'));
+    console.log('Express server listening on port ' + app.get('port'));
 });

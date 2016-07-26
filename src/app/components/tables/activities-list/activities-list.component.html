@@ -1,0 +1,24 @@
+<div *ngIf="activities">
+    <table class="table table-bordered">
+        <thead>
+        <th>Activities</th>
+        <th>Total hours</th>
+        <th>No. of Activities</th>
+        <th>Sat. families attended</th>
+        <th>Community attended</th>
+        <th>Host agency attended</th>
+        <th>Training details &#47 notes</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let activity of activities">
+            <td>{{ activity.activityType }}</td> 
+            <td>{{ activity.totalHours }}</td>
+            <td>{{ activity.numActivities }}</td>      
+            <td>{{ activity.familiesAttended }}</td>      
+            <td>{{ activity.commAttended }}</td>      
+            <td>{{ activity.agencyAttended }}</td>      
+            <td>{{ activity.notes }}</td>                                
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -18,7 +18,7 @@ import { Location, LocationStrategy } from '@angular/common';
 import { SpyLocation } from '@angular/common/testing';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { PlacementsAddComponent } from './components/placements/placements.component';
 
 @Component({
     selector: 'as-test',
@@ -29,7 +29,7 @@ class TestComponent {
 }
 
 let config: RouterConfig = [
-    {path: '', component: HomeComponent},
+    {path: '', component: PlacementsAddComponent},
 ];
 
 // TODO: Use ROUTER_FAKE_PROVIDERS when it's available
@@ -57,14 +57,14 @@ describe('AppComponent', () => {
         ]);
     });
 
-    it('should have brand Angular 2 Starter', async(inject([TestComponentBuilder],
+    it('should have brand Mockingbird', async(inject([TestComponentBuilder],
         (tsb: TestComponentBuilder) => {
             tsb.createAsync(TestComponent).then((fixture: ComponentFixture<TestComponent>) => {
                 fixture.detectChanges();
                 let compiled = fixture.debugElement.nativeElement;
                 expect(compiled).toBeDefined();
                 expect(compiled.querySelector('a.navbar-brand'))
-                    .toContainText('Angular 2 Starter');
+                    .toContainText('Mockingbird');
             });
         })));
 });

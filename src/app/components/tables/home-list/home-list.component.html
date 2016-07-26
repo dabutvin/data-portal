@@ -1,0 +1,29 @@
+<div *ngIf="homes">
+    <table class="table table-bordered">
+        <thead>
+        <th>Home Type</th>
+        <th>Name</th>
+        <th>Zip code</th>
+        <th>Non dependent youth</th>
+        <th>Dependent youth</th>
+        <th>Start Date</th>
+        <th>Planned respite hours</th>
+        <th>Crisis respite hours</th>
+        <th>No of crisis supports</th>
+        <th>No of Transports</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let activity of activities">
+            <td>{{ home.homeType }}</td> 
+            <td>{{ home.lName }}</td>
+            <td>{{ home.zipCode }}</td>      
+            <td>{{ home.numNonDepYouth }}</td>      
+            <td>{{ home.startDate }}</td>      
+            <td>{{ home.plannedRespiteHours }}</td>      
+            <td>{{ home.crisisRespiteHours }}</td>                                
+            <td>{{ home.numCrisisSupports }}</td>                                
+            <td>{{ home.numTransports }}</td>                                
+        </tr>
+        </tbody>
+    </table>
+</div>
