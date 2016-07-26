@@ -9,9 +9,9 @@ export class HttpUtilsService {
     constructor(private http: Http) { }
 
     get(url: string) {
-        return this.http.get(url)
+        return this.http.get(`http://localhost:3000/${url}`)        // TODO change url
             .toPromise()
-            .then(response => response.json().data)
+            .then(response => response.json())
             .catch(this.handleError);
     }
 
@@ -20,7 +20,7 @@ export class HttpUtilsService {
             'Content-Type': 'application/json'});
 
         return this.http
-            .post(url, JSON.stringify(data), {headers: headers})
+            .post(`http://localhost:3000/${url}`, JSON.stringify(data), {headers: headers})
             .toPromise()
             .then(res => res.json().data)
             .catch(this.handleError);
