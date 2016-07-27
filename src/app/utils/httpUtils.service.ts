@@ -2,14 +2,19 @@ import { Injectable }     from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
+import { Config } from './config';
+
 
 @Injectable()
 export class HttpUtilsService {
 
-    constructor(private http: Http) { }
+    serverUrl: string;
+    constructor(private http: Http, config: Config) {
+        this.serverUrl = config.getServerUrl();
+    }
 
     get(url: string) {
-        return this.http.get(url)        // TODO change url
+        return this.http.get(`${this.serverUrl}${url}`)
             .toPromise()
             .then(response => response.json())
             .catch(this.handleError);
@@ -21,7 +26,7 @@ export class HttpUtilsService {
         });
 
         return this.http
-            .post(url, JSON.stringify(data), { headers: headers })
+            .post(`${this.serverUrl}/${url}`, JSON.stringify(data), { headers: headers })
             .toPromise()
             .then(res => res.json().data)
             .catch(this.handleError);
