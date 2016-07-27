@@ -8,7 +8,6 @@ import { APP_PROVIDERS } from './app.providers';
 import { AppComponent } from './app.component';
 
 import { HttpUtilsService } from './utils/httpUtils.service';
-import { Config } from './utils/config';
 
 
 
@@ -21,6 +20,5 @@ if (ENV === 'production') {
 bootstrap(AppComponent, [
     APP_PROVIDERS,
     HTTP_PROVIDERS,
-    HttpUtilsService,
-    Config
+    HttpUtilsService
 ]);
