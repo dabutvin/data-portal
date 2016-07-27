@@ -3,6 +3,10 @@
 	color: color(primary);
 }
 
+.container {
+  width: 100%;
+}
+
 .navbar-inverse {
   background-color: #54305f;
 }
@@ -13,6 +17,7 @@
 
 .navbar-nav > li > a {
   padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .navbar-header {
@@ -69,4 +74,31 @@
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
   background-color: #eeeaef;
   color: #000;
+}
+
+table {
+  font-size: 12px;
+}
+
+thead {
+  background-color: #e18232;
+  color: #fff;
+}
+
+thead th {
+  font-weight: 200;
+  padding: 10px;
+}
+
+table tbody tr {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+* {
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+h4 {
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
 }

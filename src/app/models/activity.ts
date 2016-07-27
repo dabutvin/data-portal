@@ -1,7 +1,8 @@
-type AttendedEnum =
-    "Yes"
-    | "No"
-    | "N/A";
+let AttendedEnum = {
+    YES: 'Yes',
+    NO: 'No',
+    NA: 'N/A'
+};
 
 export class Activity {
     activityType: string;
@@ -9,7 +10,7 @@ export class Activity {
     numActivities: number;      // Number of activities
     familiesAttended: number;   // Number of satellite families that attended
     commAttended: number;       // No. of attending community members
-    agencyAttended: AttendedEnum;  // This field should only ever take the values
+    agencyAttended: string;  // This field should only ever take the values
                                     // "Yes", "No", or "N/A"
     notes: string;              // Additional notes and details
 
@@ -19,7 +20,17 @@ export class Activity {
         this.numActivities = data.NumberOfActivities;
         this.commAttended = data.NumberOfCommunityAttended;
         this.familiesAttended = data.NumberOfSatelliteFamiliesAttended;
-        this.agencyAttended = data.HostAgencyAttended;
+        this.agencyAttended = this.getAttendedStatus(data.HostAgencyAttended);
         this.notes = data.Notes;
+    }
+
+    getAttendedStatus(status: boolean) {
+        if (status) {
+            return AttendedEnum.YES;
+        } else if (status === false) {
+            return AttendedEnum.NO;
+        } else {
+            return AttendedEnum.NA;
+        }
     }
 }
