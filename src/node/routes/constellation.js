@@ -6,8 +6,8 @@ var mssql;
 
 // define the home page route
 router.get('/:constellationId/overview/:reportDate', function (req, res) {
-    db.sendRequest(function () {
-        new sql.Request()
+    db.sendRequest(function (cp) {
+        new sql.Request(cp)
             .input('Email', req.params.constellationId)
             .input('ReportDate', req.params.reportDate)
             .execute('GetConstellationOverview').then(function (recordSet) {
@@ -19,8 +19,8 @@ router.get('/:constellationId/overview/:reportDate', function (req, res) {
 });
 
 router.get('/:constellationId/activities/:reportDate', function (req, res) {
-    db.sendRequest(function () {
-        new sql.Request()
+    db.sendRequest(function (cp) {
+        new sql.Request(cp)
             .input('Email', req.params.constellationId)
             .input('ReportDate', req.params.reportDate)
             .execute('GetConstellationActivities').then(function (recordSet) {
@@ -32,8 +32,8 @@ router.get('/:constellationId/activities/:reportDate', function (req, res) {
 });
 
 router.get('/:constellationId/home-support/:reportDate', function (req, res) {
-    db.sendRequest(function () {
-        new sql.Request()
+    db.sendRequest(function (cp) {
+        new sql.Request(cp)
             .input('Email', req.params.constellationId)
             .input('ReportDate', req.params.reportDate)
             .execute('GetConstellationHomeSupport').then(function (recordSet) {
@@ -45,8 +45,8 @@ router.get('/:constellationId/home-support/:reportDate', function (req, res) {
 });
 
 router.get('/:constellationId/homes/:reportDate', function (req, res) {
-    db.sendRequest(function () {
-        new sql.Request()
+    db.sendRequest(function (cp) {
+        new sql.Request(cp)
             .input('Email', req.params.constellationId)
             .input('ReportDate', req.params.reportDate)
             .execute('GetHomesInConstellation').then(function (recordSet) {
@@ -58,8 +58,8 @@ router.get('/:constellationId/homes/:reportDate', function (req, res) {
 });
 
 router.get('/:constellationId/youth/:reportDate', function (req, res) {
-    db.sendRequest(function () {
-        new sql.Request()
+    db.sendRequest(function (cp) {
+        new sql.Request(cp)
             .input('Email', req.params.constellationId)
             .input('ReportDate', req.params.reportDate)
             .execute('GetYouthInConstellation').then(function (recordSet) {

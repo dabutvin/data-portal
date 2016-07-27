@@ -8,7 +8,7 @@ var express = require('express'),
     methodOverride = require('method-override'),
     errorHandler = require('error-handler'),
     morgan = require('morgan')
-    sql = require('mssql'),
+sql = require('mssql'),
     routes = require('./node/routes'),
     api = require('./node/routes/api'),
     http = require('http'),
@@ -21,6 +21,7 @@ dotenv.config({ silent: true });
 
 var env = require('./node/shared/env');
 
+var db = require('./node/shared/db');
 var constellation = require('./node/routes/constellation');
 
 /**
@@ -35,16 +36,15 @@ app.use(bodyParser.urlencoded({ 'extended': 'true' }));            // parse appl
 app.use(bodyParser.json());                                     // parse application/json
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 app.use(methodOverride());
-app.use(function(req, res, next) {        // TODO remove cross origin req
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
 
 // development only
 if (env.env === 'development') {
     //app.use(express.errorHandler());
+    app.use(function (req, res, next) {        // TODO remove cross origin req
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+    });
 }
 
 // production only
@@ -73,7 +73,8 @@ app.get('*', routes.index);
 /**
  * Start Server
  */
-
-http.createServer(app).listen(app.get('port'), function () {
-    console.log('Express server listening on port ' + app.get('port'));
+db.sqlConnect().then(function () {
+    http.createServer(app).listen(app.get('port'), function () {
+        console.log('Express server listening on port ' + app.get('port'));
+    });
 });
