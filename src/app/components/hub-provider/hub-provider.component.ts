@@ -3,12 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { ConstellationService } from '../../services/constellation.service';
 import { Constellation } from '../../models/constellation';
 import { ActivityListComponent } from '../tables/activities-list/activities-list.component';
+import { HomeListComponent } from '../tables/home-list/home-list.component';
+
 
 @Component({
     selector: 'as-hub-provider',
     templateUrl: 'app/components/hub-provider/hub-provider.component.html',
     providers: [ConstellationService],
-    directives: [ActivityListComponent]
+    directives: [ActivityListComponent, HomeListComponent]
 })
 
 export class HubProviderComponent implements OnInit {

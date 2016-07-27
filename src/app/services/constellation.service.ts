@@ -16,4 +16,9 @@ export class ConstellationService {
         const url = `api/constellation/${constellationId}/activities/${reportDate}`;
         return this.httpUtil.get(url);
     }
+
+    getConstellationHomeDetail(constellationId: string, reportDate: string) {
+        let url = `api/constellation/${constellationId}/home-support/${reportDate}`;
+        return this.httpUtil.get(url);
+    }
 }
