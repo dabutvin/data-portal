@@ -63,7 +63,7 @@
       "variable-declaration": "nospace"
     }],
     "variable-name": false,
-    "whitespace": [true,
+    "whitespace": [false,
       "check-branch",
       "check-decl",
       "check-operator",
