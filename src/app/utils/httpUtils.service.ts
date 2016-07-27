@@ -9,18 +9,19 @@ export class HttpUtilsService {
     constructor(private http: Http) { }
 
     get(url: string) {
-        return this.http.get(url)
+        return this.http.get(url)        // TODO change url
             .toPromise()
-            .then(response => response.json().data)
+            .then(response => response.json())
             .catch(this.handleError);
     }
 
     post(url: string, data: any): Promise<any> {
         let headers = new Headers({
-            'Content-Type': 'application/json'});
+            'Content-Type': 'application/json'
+        });
 
         return this.http
-            .post(url, JSON.stringify(data), {headers: headers})
+            .post(url, JSON.stringify(data), { headers: headers })
             .toPromise()
             .then(res => res.json().data)
             .catch(this.handleError);
