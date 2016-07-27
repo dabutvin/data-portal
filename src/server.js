@@ -23,6 +23,7 @@ var env = require('./node/shared/env');
 
 var db = require('./node/shared/db');
 var constellation = require('./node/routes/constellation');
+var home = require('./node/routes/home');
 
 /**
  * Configuration
@@ -65,6 +66,7 @@ app.get('/', routes.index);
 // JSON API
 app.get('/api/name', api.name);
 app.use('/api/constellation', constellation);
+app.use('/api/homes', home);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
