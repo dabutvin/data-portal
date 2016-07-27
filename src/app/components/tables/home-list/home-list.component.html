@@ -19,7 +19,7 @@
             <td>{{ home.zipCode }}</td>      
             <td>{{ home.numNonDepYouth }}</td>
             <td>{{ home.numDepYouth}}</td>
-            <td>{{ home.startDate }}</td>      
+            <td>{{ home.startDate | date: 'MM/dd/yyyy'}}</td>
             <td>{{ home.plannedRespiteHours }}</td>      
             <td>{{ home.crisisRespiteHours }}</td>                                
             <td>{{ home.numCrisisSupports }}</td>                                
