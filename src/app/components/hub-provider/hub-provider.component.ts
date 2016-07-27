@@ -16,7 +16,7 @@ import { HomeListComponent } from '../tables/home-list/home-list.component';
 export class HubProviderComponent implements OnInit {
 
     constellationId: string = '123';
-    reportDate: string = '10.10.2010';
+    reportDate: string = '1234';
 
     constellation: Constellation;
 
