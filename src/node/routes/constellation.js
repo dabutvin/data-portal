@@ -5,11 +5,11 @@ var db = require('../shared/db');
 var mssql;
 
 // define the home page route
-router.get('/:constellationId/overview/:reportDate', function (req, res) {
+router.get('/:constellationId/overview/:reportDateId', function (req, res) {
     db.sendRequest(function (cp) {
         new sql.Request(cp)
             .input('Email', req.params.constellationId)
-            .input('ReportDate', req.params.reportDate)
+            .input('ReportDateId', req.params.reportDateId)
             .execute('GetConstellationOverview').then(function (recordSet) {
                 res.send(recordSet);
             }).catch(function (err) {
@@ -18,11 +18,11 @@ router.get('/:constellationId/overview/:reportDate', function (req, res) {
     });
 });
 
-router.get('/:constellationId/activities/:reportDate', function (req, res) {
+router.get('/:constellationId/activities/:reportDateId', function (req, res) {
     db.sendRequest(function (cp) {
         new sql.Request(cp)
             .input('Email', req.params.constellationId)
-            .input('ReportDate', req.params.reportDate)
+            .input('ReportDateId', req.params.reportDateId)
             .execute('GetConstellationActivities').then(function (recordSet) {
                 res.send(recordSet);
             }).catch(function (err) {
@@ -31,11 +31,11 @@ router.get('/:constellationId/activities/:reportDate', function (req, res) {
     });
 });
 
-router.get('/:constellationId/home-support/:reportDate', function (req, res) {
+router.get('/:constellationId/home-support/:reportDateId', function (req, res) {
     db.sendRequest(function (cp) {
         new sql.Request(cp)
             .input('Email', req.params.constellationId)
-            .input('ReportDate', req.params.reportDate)
+            .input('ReportDateId', req.params.reportDateId)
             .execute('GetConstellationHomeSupport').then(function (recordSet) {
                 res.send(recordSet);
             }).catch(function (err) {
@@ -44,11 +44,11 @@ router.get('/:constellationId/home-support/:reportDate', function (req, res) {
     });
 });
 
-router.get('/:constellationId/homes/:reportDate', function (req, res) {
+router.get('/:constellationId/homes/:reportDateId', function (req, res) {
     db.sendRequest(function (cp) {
         new sql.Request(cp)
             .input('Email', req.params.constellationId)
-            .input('ReportDate', req.params.reportDate)
+            .input('ReportDateId', req.params.reportDateId)
             .execute('GetHomesInConstellation').then(function (recordSet) {
                 res.send(recordSet);
             }).catch(function (err) {
@@ -57,11 +57,11 @@ router.get('/:constellationId/homes/:reportDate', function (req, res) {
     });
 });
 
-router.get('/:constellationId/youth/:reportDate', function (req, res) {
+router.get('/:constellationId/youth/:reportDateId', function (req, res) {
     db.sendRequest(function (cp) {
         new sql.Request(cp)
             .input('Email', req.params.constellationId)
-            .input('ReportDate', req.params.reportDate)
+            .input('ReportDateId', req.params.reportDateId)
             .execute('GetYouthInConstellation').then(function (recordSet) {
                 res.send(recordSet);
             }).catch(function (err) {
