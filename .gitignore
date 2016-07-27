@@ -9,5 +9,5 @@
 /src/tmp
 .DS_Store
 /src/assets/styles/*.css
-.env
+*.env
 **/npm-debug.log
