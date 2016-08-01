@@ -12,10 +12,12 @@ export class Constellation {
     NumberOfFullSiblingSets: number;
     NumberOfFullSiblingSetsSinceLaunch: number;
     NumberOfNewlyLicensedHomesAdded: number;
+    NumberOfNonDependentYouth: number;
     NumberOfRecruitingEvents: number;
     NumberOfSafetyAllegations: number;
     NumberOfSateliteHomes: number;
     ReportStatus: string;
+    FreeOfCPSIssues: string;
 
 
     constructor(data: any) {
@@ -36,5 +38,7 @@ export class Constellation {
         this.NumberOfSafetyAllegations = data.NumberOfSafetyAllegations;
         this.NumberOfSateliteHomes = data.NumberOfSateliteHomes;
         this.ReportStatus = data.ReportStatus;
+        this.NumberOfNonDependentYouth = data.NumberOfNonDependentYouth;
+        this.FreeOfCPSIssues = data.FreeOfCPSIssues === 1 ? 'Yes': 'No';
     }
 }

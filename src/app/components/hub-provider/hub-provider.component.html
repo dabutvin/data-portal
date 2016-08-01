@@ -30,11 +30,10 @@
   </div>
   <div class="row">
     <div class="col-md-4">
-      <label>Number of Non dependent youth: </label> {{constellation.NumberOfDependentYouth}}
+      <label>Number of Non dependent youth: </label> {{constellation.NumberOfNonDependentYouth}}
     </div>
     <div class="col-md-8">
-      <!-- TODO Missing info -->
-      <label>No. of Dependent youth: </label> 0
+      <label>No. of Dependent youth: </label> {{constellation.NumberOfDependentYouth}}
     </div>
   </div>
   <div class="row">
@@ -55,8 +54,7 @@
       <label>Hub home start date:</label> {{constellation.HubHomeStartDate | date: 'MM/dd/yyyy'}}
     </div>
     <div class="col-md-8">
-      <!-- TODO this info is missing-->
-      <label>Free of CPS or licensing allegations issues?</label> Yes
+      <label>Free of CPS or licensing allegations issues?</label> {{constellation.FreeOfCPSIssues}}
     </div>
   </div>
   <div class="row">

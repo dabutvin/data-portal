@@ -14,6 +14,7 @@
   "scripts": {
     "postinstall": "typings install",
     "start": "gulp serve-dev",
+    "api-server": "gulp express-dev",
     "test": "gulp test",
     "e2e": "gulp e2e",
     "build": "gulp build",
