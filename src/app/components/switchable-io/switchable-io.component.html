@@ -1,5 +1,5 @@
 <div *ng-if="editable">
- <input type="text" value={{value}}>
+ <input type="text" [(ngModel)]="value">
 </div>
 <div *ng-if="!editable">
   {{value}}
