@@ -7,13 +7,16 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
     errorHandler = require('error-handler'),
-    morgan = require('morgan')
-sql = require('mssql'),
+    morgan = require('morgan'),
     routes = require('./node/routes'),
     api = require('./node/routes/api'),
     http = require('http'),
     path = require('path'),
-    dotenv = require('dotenv');
+    dotenv = require('dotenv'),
+    cookieParser = require('body-parser'),
+    session = require('express-session'),
+    passport = require('passport'),
+    LocalStrategy = require('passport-local').Strategy;
 
 var app = module.exports = express();
 
@@ -37,6 +40,49 @@ app.use(bodyParser.urlencoded({ 'extended': 'true' }));            // parse appl
 app.use(bodyParser.json());                                     // parse application/json
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 app.use(methodOverride());
+
+app.use(cookieParser.json());
+app.use(session({
+    secret: 'secret_key',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+var User = [
+    {
+        id: 'user1',
+        password: 'password1'
+    }
+]
+
+passport.use(new LocalStrategy(
+    function (username, password, done) {
+        var found = false;
+        for (var i = 0; i < User.length; i++) {
+            if (username === User[i].id && password === User[i].password) {
+                found = true;
+                return done(null, User[i]);
+            }
+        }
+        if (!found) {
+            return done(null, false);
+        }
+    }
+));
+
+passport.serializeUser(function (user, done) {
+    done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+    for (var i = 0; i < User.length; i++) {
+        if (id === User[i].id) {
+            done(null, User[i]);
+        }
+    }
+});
 
 // development only
 if (env.env === 'development') {
@@ -62,6 +108,13 @@ var db = require('./node/shared/db');
 // serve index and view partials
 app.get('/', routes.index);
 //app.get('/partials/:name', routes.partials);
+
+app.post('/login',
+    passport.authenticate('local', { failureRedirect: '/api/name' }),
+    function (req, res) {
+        res.redirect('/api/homes');
+    }
+);
 
 // JSON API
 app.get('/api/name', api.name);

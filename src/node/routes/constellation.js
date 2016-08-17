@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../shared/db');
+var sql = require('mssql');
 
 var mssql;
 
