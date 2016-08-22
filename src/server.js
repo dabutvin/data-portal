@@ -16,7 +16,10 @@ var express = require('express'),
     cookieParser = require('body-parser'),
     session = require('express-session'),
     passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy;
+    jwt = require('jwt-simple'),
+    LocalStrategy = require('passport-local').Strategy,
+    OAuth2Strategy = require('passport-oauth2').Strategy,
+    AzureOAuth2Strategy = require("passport-azure-oauth2");
 
 var app = module.exports = express();
 
@@ -44,45 +47,41 @@ app.use(methodOverride());
 app.use(cookieParser.json());
 app.use(session({
     secret: 'secret_key',
-    resave: false,
-    saveUninitialized: false
+    resave: true,
+    saveUninitialized: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-var User = [
-    {
-        id: 'user1',
-        password: 'password1'
-    }
-]
-
-passport.use(new LocalStrategy(
-    function (username, password, done) {
-        var found = false;
-        for (var i = 0; i < User.length; i++) {
-            if (username === User[i].id && password === User[i].password) {
-                found = true;
-                return done(null, User[i]);
-            }
-        }
-        if (!found) {
-            return done(null, false);
-        }
+passport.use("aad", new AzureOAuth2Strategy({
+    clientID: env.clientId,
+    clientSecret: env.clientSecret,
+    callbackURL: env.callbackUrl,
+    tenant: env.tenantId,
+    prompt: 'login',
+    resource: '00000002-0000-0000-c000-000000000000',
+    state: false
+},
+    function (accessToken, refreshtoken, params, profile, done) {
+        var user = jwt.decode(params.id_token, "", true);
+        done(null, user);
     }
 ));
 
 passport.serializeUser(function (user, done) {
-    done(null, user.id);
+    done(null, user);
 });
 
-passport.deserializeUser(function (id, done) {
-    for (var i = 0; i < User.length; i++) {
-        if (id === User[i].id) {
-            done(null, User[i]);
-        }
-    }
+passport.deserializeUser(function (user, done) {
+    done(null, user);
 });
+
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated())
+    return next();
+  else
+    res.redirect('/login');
+}
 
 // development only
 if (env.env === 'development') {
@@ -109,17 +108,18 @@ var db = require('./node/shared/db');
 app.get('/', routes.index);
 //app.get('/partials/:name', routes.partials);
 
-app.post('/login',
-    passport.authenticate('local', { failureRedirect: '/api/name' }),
-    function (req, res) {
-        res.redirect('/api/homes');
-    }
-);
+app.get("/login", passport.authenticate("aad", { successRedirect: "/api/homes" }));
+
+app.get("/auth/callback",
+    passport.authenticate("aad", {
+        successRedirect: "/api/homes",
+        failureRedirect: "/login"
+    }), function (req, res) { res.redirect("/api/homes"); });
 
 // JSON API
-app.get('/api/name', api.name);
-app.use('/api/constellation', constellation);
-app.use('/api/homes', home);
+app.get('/api/name', ensureAuthenticated, api.name);
+app.use('/api/constellation', ensureAuthenticated, constellation);
+app.use('/api/homes', ensureAuthenticated, home);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
