@@ -13,6 +13,9 @@ export class InMemoryDataService implements InMemoryDbService {
       {id: 19, name: 'Magma'},
       {id: 20, name: 'Tornado'}
     ];
-    return {heroes};
+    let homes = [
+      {id: 1, name: 'Home 1'}
+    ]
+    return {heroes, homes};
   }
 }

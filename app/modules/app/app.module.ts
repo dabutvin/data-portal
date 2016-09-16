@@ -1,5 +1,6 @@
 import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 
 /* App Root */
 import { AppComponent }   from './app.component';
@@ -15,6 +16,7 @@ import { InMemoryDataService }  from '../../services/in-memory-data.service';
 @NgModule({
   imports: [
     BrowserModule,
+    HttpModule,
     HomeModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     routing

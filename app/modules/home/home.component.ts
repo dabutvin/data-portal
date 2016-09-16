@@ -7,20 +7,20 @@ import { HomeService }         from './home.service';
 @Component({
     moduleId: module.id,
     selector: 'homes',
-    templateUrl: 'app/homes.component.html'
+    templateUrl: 'home.component.html'
 })
 export class HomeComponent implements OnInit {
-    homees: Home[];
+    homes: Home[];
     selectedHome: Home;
 
     constructor(
         private homeService: HomeService,
         private router: Router) { }
 
-    getHomees(): void {
+    gethomes(): void {
         this.homeService
             .getHomes()
-            .then(homees => this.homees = homees);
+            .then(homes => this.homes = homes);
     }
 
     add(name: string): void {
@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
         if (!name) { return; }
         this.homeService.create(name)
             .then(home => {
-                this.homees.push(home);
+                this.homes.push(home);
                 this.selectedHome = null;
             });
     }
@@ -37,13 +37,13 @@ export class HomeComponent implements OnInit {
         this.homeService
             .delete(home.id)
             .then(() => {
-                this.homees = this.homees.filter(h => h !== home);
+                this.homes = this.homes.filter(h => h !== home);
                 if (this.selectedHome === home) { this.selectedHome = null; }
             });
     }
 
     ngOnInit(): void {
-        this.getHomees();
+        this.gethomes();
     }
 
     onSelect(home: Home): void {
