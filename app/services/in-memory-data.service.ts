@@ -1,21 +1,52 @@
 import { InMemoryDbService } from 'angular2-in-memory-web-api';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    let heroes = [
-      {id: 11, name: 'Mr. Nice'},
-      {id: 12, name: 'Narco'},
-      {id: 13, name: 'Bombasto'},
-      {id: 14, name: 'Celeritas'},
-      {id: 15, name: 'Magneta'},
-      {id: 16, name: 'RubberMan'},
-      {id: 17, name: 'Dynama'},
-      {id: 18, name: 'Dr IQ'},
-      {id: 19, name: 'Magma'},
-      {id: 20, name: 'Tornado'}
-    ];
-    let homes = [
-      {id: 1, name: 'Home 1'}
+    let constellations = [
+      {
+        id: 1,
+        agencyName: 'XYZ Placements',
+        constellationName: 'Acme',
+        constellationStartDate: '11/28/2014',
+        hubHomePrimaryContactEmail: 'JaneD@outlook.com',
+        hubHomePrimaryContactName: 'Jane Doe',
+        hubHomePrimaryContactPhone: '(123) 456-7890',
+        hubHomeStartDate: '03/01/2015',
+        lastUpdated: '06/03/2016',
+        numberOfDependentYouth: 9,
+        numberOfExistingLicensedHomesAdded: 2,
+        numberOfFullSiblingSets: 3,
+        numberOfFullSiblingSetsSinceLaunch: 6,
+        numberOfNewlyLicensedHomesAdded: 0,
+        numberOfNonDependentYouth: 7,
+        numberOfRecruitingEvents: 3,
+        numberOfSafetyAllegations: 0,
+        numberOfSateliteHomes: 4,
+        reportStatus: 'Not submitted',
+        freeOfCPSIssues: 'Yes'
+      },
+      {
+        id: 2,
+        agencyName: 'ABC 4 Kids',
+        constellationName: 'Contoso',
+        constellationStartDate: '11/28/2014',
+        hubHomePrimaryContactEmail: 'JaneD@outlook.com',
+        hubHomePrimaryContactName: 'Jane Doe',
+        hubHomePrimaryContactPhone: '(123) 456-7890',
+        hubHomeStartDate: '03/01/2015',
+        lastUpdated: '06/03/2016',
+        numberOfDependentYouth: 9,
+        numberOfExistingLicensedHomesAdded: 2,
+        numberOfFullSiblingSets: 3,
+        numberOfFullSiblingSetsSinceLaunch: 6,
+        numberOfNewlyLicensedHomesAdded: 0,
+        numberOfNonDependentYouth: 7,
+        numberOfRecruitingEvents: 3,
+        numberOfSafetyAllegations: 0,
+        numberOfSateliteHomes: 4,
+        reportStatus: 'Not submitted',
+        freeOfCPSIssues: 'Yes'
+      },
     ]
-    return {heroes, homes};
+    return { constellations };
   }
 }

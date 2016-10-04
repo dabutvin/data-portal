@@ -1,92 +1,92 @@
 <div class="container" *ngIf="constellation">
     <div class="row">
         <div class="col-md-3">
-            <label>Constellation Name: </label> {{constellation.ConstellationName}}
+            <label>Constellation Name: </label> {{constellation.constellationName}}
         </div>
         <div class="col-md-3">
-            <label>Host Agency: </label> {{constellation.AgencyName}}
+            <label>Host Agency: </label> {{constellation.agencyName}}
         </div>
         <div class="col-md-2">
-            <label>Last updated: </label> {{constellation.LastUpdated | date: 'MM/dd/yyyy'}}
+            <label>Last updated: </label> {{constellation.lastUpdated | date: 'MM/dd/yyyy'}}
         </div>
         <div class="col-md-2">
             <label>Report period</label> June 2016
         </div>
         <div class="col-md-2">
-            <label>Report status</label> {{constellation.ReportStatus}}
+            <label>Report status</label> {{constellation.reportStatus}}
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col-md-4">
-            <label>Number of satellite homes: </label> {{constellation.NumberOfSateliteHomes}}
+            <label>Number of satellite homes: </label> {{constellation.numberOfSateliteHomes}}
         </div>
         <div class="col-md-4">
-            <label>Constellation launch date: </label> {{constellation.ConstellationStartDate | date: 'MM/dd/yyyy'}}
+            <label>Constellation launch date: </label> {{constellation.constellationStartDate | date: 'MM/dd/yyyy'}}
         </div>
         <div class="col-md-4">
-            <label>No. of allegations made on safety of the Constellation youth: </label> {{constellation.NumberOfSafetyAllegations}}
+            <label>No. of allegations made on safety of the Constellation youth: </label> {{constellation.numberOfSafetyAllegations}}
         </div>
     </div>
     <div class="row">
         <div class="col-md-4">
-            <label>Number of Non dependent youth: </label> {{constellation.NumberOfNonDependentYouth}}
+            <label>Number of Non dependent youth: </label> {{constellation.numberOfNonDependentYouth}}
         </div>
         <div class="col-md-8">
-            <label>No. of Dependent youth: </label> {{constellation.NumberOfDependentYouth}}
+            <label>No. of Dependent youth: </label> {{constellation.numberOfDependentYouth}}
         </div>
     </div>
     <div class="row">
         <div class="col-md-4">
-            <label>Number of sibling sets: </label> {{constellation.NumberOfFullSiblingSets}}
+            <label>Number of sibling sets: </label> {{constellation.numberOfFullSiblingSets}}
         </div>
         <div class="col-md-4">
-            <label>Full sibling sets in the same satellite home: </label> {{constellation.NumberOfDependentYouth}} <a href="">View</a>
+            <label>Full sibling sets in the same satellite home: </label> {{constellation.numberOfDependentYouth}} <a href="">View</a>
         </div>
         <div class="col-md-4">
-            <label>No. of sibling sets in constellation since launch: </label> {{constellation.NumberOfFullSiblingSetsSinceLaunch}}
+            <label>No. of sibling sets in constellation since launch: </label> {{constellation.numberOfFullSiblingSetsSinceLaunch}}
         </div>
     </div>
     <br>
     <h4>Hub Home</h4>
     <div class="row">
         <div class="col-md-4">
-            <label>Hub home start date:</label> {{constellation.HubHomeStartDate | date: 'MM/dd/yyyy'}}
+            <label>Hub home start date:</label> {{constellation.hubHomeStartDate | date: 'MM/dd/yyyy'}}
         </div>
         <div class="col-md-8">
-            <label>Free of CPS or licensing allegations issues?</label> {{constellation.FreeOfCPSIssues}}
+            <label>Free of CPS or licensing allegations issues?</label> {{constellation.freeOfCPSIssues}}
         </div>
     </div>
     <div class="row">
         <div class="col-md-4">
-            <label>Hub provider:</label> {{constellation.HubHomePrimaryContactName}}
+            <label>Hub provider:</label> {{constellation.hubHomePrimaryContactName}}
         </div>
         <div class="col-md-4">
-            <label>Phone:</label> {{constellation.HubHomePrimaryContactPhone}}
+            <label>Phone:</label> {{constellation.hubHomePrimaryContactPhone}}
         </div>
         <div class="col-md-4">
-            <label>Email:</label> {{constellation.HubHomePrimaryContactEmail}}
+            <label>Email:</label> {{constellation.hubHomePrimaryContactEmail}}
         </div>
     </div>
     <div class="row">
         <div class="col-md-4">
-            <label>Foster parent recruitment activities:</label> {{constellation.NumberOfRecruitingEvents}}
+            <label>Foster parent recruitment activities:</label> {{constellation.numberOfRecruitingEvents}}
         </div>
         <div class="col-md-4">
-            <label>No. of newly licensed homes added:</label> {{constellation.NumberOfNewlyLicensedHomesAdded}}
+            <label>No. of newly licensed homes added:</label> {{constellation.numberOfNewlyLicensedHomesAdded}}
         </div>
         <div class="col-md-4">
-            <label>No. of existing licensed homes added:</label> {{constellation.NumberOfExistingLicensedHomesAdded}}
+            <label>No. of existing licensed homes added:</label> {{constellation.numberOfExistingLicensedHomesAdded}}
         </div>
     </div>
-    <br>
+    <!--<br>
     <h4>Constellation activities this period</h4>
-    <!--<as-activity-list-table [constellationId]="constellationId" [reportDate]="reportDate"></as-activity-list-table>-->
+        <as-activity-list-table [constellationId]="constellationId" [reportDate]="reportDate"></as-activity-list-table>
 
     <br>
     <h4>Constellation home support services this period</h4>
-    <!--<as-home-list-table [constellationId]="constellationId" [reportDate]="reportDate"></as-home-list-table>-->
+        <as-home-list-table [constellationId]="constellationId" [reportDate]="reportDate"></as-home-list-table>
     <br>
-    <br>
+    <br>-->
 </div>
 <div *ngIf="!constellation">No constellation loaded</div>

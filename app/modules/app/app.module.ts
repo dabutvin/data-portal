@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent }   from './app.component';
 
 /* Feature Modules */
-import { HomeModule }  from '../home/home.module';
+import { ConstellationModule }  from '../constellation/constellation.module';
 import { routing }        from './app.routing';
 
 // Imports for loading & configuring the in-memory web api
@@ -17,7 +17,7 @@ import { InMemoryDataService }  from '../../services/in-memory-data.service';
   imports: [
     BrowserModule,
     HttpModule,
-    HomeModule,
+    ConstellationModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     routing
   ],
