@@ -1,0 +1,20 @@
+<div>
+  <label *ngIf="label" [attr.for]="id">{{ label }}</label>
+
+  <div [ngSwitch]="type">
+
+    <input *ngSwitchCase="'textbox'" [id]="id" type="text" [disabled]="!editable">
+
+    <select [id]="id" *ngSwitchCase="'dropdown'" [disabled]="!editable">
+      <option *ngFor="let opt of options" [value]="opt">{{ opt }}</option>
+      <option *ngIf="!options">No options available</option>
+    </select>
+
+    <input *ngSwitchCase="'checkbox'" [id]="id" type="checkbox" [disabled]="!editable">
+
+    <span *ngSwitchDefault>This type is not supported.</span>
+
+  </div> 
+
+  <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div>
+</div>

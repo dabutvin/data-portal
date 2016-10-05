@@ -1,15 +1,11 @@
 // Place your settings in this file to overwrite default and user settings.
 {
     "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.DS_Store": true,
-        "**/node_modules": true,
         ".vscode": true,
-        ".idea": true,
-        "**/build": true,
-        "dist": true,
+        ".sass-cache": true,
+        "node_modules": true,
         "typings": true,
-        "report": true
+        "app/**/*.js": true,
+        "app/**/*.js.map": true
     }
 }
