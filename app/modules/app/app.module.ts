@@ -10,7 +10,7 @@ import { ConstellationModule }  from '../constellation/constellation.module';
 import { routing }        from './app.routing';
 
 // Imports for loading & configuring the in-memory web api
-import { InMemoryWebApiModule } from 'angular2-in-memory-web-api';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from '../../services/in-memory-data.service';
 
 @NgModule({
