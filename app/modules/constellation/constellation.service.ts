@@ -9,7 +9,7 @@ import { Constellation } from '../../utils/models/constellation';
 export class ConstellationService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private constellationsUrl = 'app/constellations';  // URL to web api
+  private constellationsUrl = 'api/constellations';  // URL to web api
 
   constructor(private http: Http) { }
 
